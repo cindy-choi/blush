@@ -1,13 +1,18 @@
 <template>
+  <Header />
   <Game />
 </template>
 
 
 <script>
 import Game from '@/components/Game'
+import Header from '@/components/Header'
 export default {
   name: 'App',
-  components: { Game }
+  components: {
+    Game,
+    Header,
+  }
 }
 </script>
 
