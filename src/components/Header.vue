@@ -42,13 +42,15 @@ export default {
 </script>
 <style scoped lang="scss">
 .main-header {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: space-between;
   margin: 1rem;
 }
 
 .header-menu {
-  width: 7rem;
+  width: 25%;
   height: 3rem;
   display: flex;
   align-items: center;
@@ -77,7 +79,7 @@ export default {
     cursor: pointer;
 
     .moving-object {
-      transition: background-color 1000ms linear;
+      transition: background-color 2.5s linear;
       background: rgba(218, 57, 57, calc((var(--menu-depth) + 1) * 0.1));
     }
   }
@@ -91,23 +93,23 @@ export default {
 @keyframes rotate {
   0% {
     top: calc(0.6rem);
-    left: calc((0.7rem + var(--menu-depth) * 16rem) + 2rem);
+    left: calc(25% * var(--menu-depth) + 2rem);
   }
   25% {
     top: calc(0.6rem + 0.6rem);
-    left: calc(0.7rem + var(--menu-depth) * 16rem);
+    left: calc( 25% * var(--menu-depth));
   }
   50% {
     top: calc(0.6rem + 1.2rem);
-    left: calc((0.7rem + var(--menu-depth) * 16rem) + 2rem);
+    left: calc(25% * var(--menu-depth) + 2rem);
   }
   75% {
     top: calc(0.6rem + 0.6rem);
-    left: calc((0.7rem + var(--menu-depth) * 16rem) + 4rem);
+    left: calc(25% * var(--menu-depth) + 4rem);
   }
   100% {
     top: 0.6rem;
-    left: calc((0.7rem + var(--menu-depth) * 16rem) + 2rem);
+    left: calc(25% * var(--menu-depth) + 2rem);
   }
 }
 </style>
