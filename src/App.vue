@@ -1,23 +1,20 @@
 <template>
-  <Game />
+  <Main />
 </template>
 
 
 <script>
-import Game from '@/components/Game'
+// import Game from '@/components/Game'
+import Main from '@/views/Main'
 export default {
   name: 'App',
-  components: { Game }
+  components: {
+    // Game,
+    Main,
+  }
 }
 </script>
 
 
 <style lang="scss">
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-}
 </style>
