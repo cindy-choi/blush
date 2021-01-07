@@ -48,12 +48,12 @@ export default {
   data: () => ({
     showMenu: false,
     menus: [
+      { id: 'Home', icon: 'mdi-home', href: '/' },
       { id: 'Intro', icon: 'mdi-alien-outline', href: '/intro' },
       { id: 'NEA', icon: 'mdi-kabaddi', href: '/nea', },
       { id: 'Toolbox', icon: 'mdi-tools', href: '/toolbox', },
       { id: 'Labs', icon: 'mdi-test-tube', href: '#', },
       { id: 'blank', icon: 'mdi-', href: '#', },
-      { id: 'blank2', icon: 'mdi-', href: '#', },
     ],
   }),
   methods: {

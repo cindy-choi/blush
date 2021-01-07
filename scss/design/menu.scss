@@ -41,9 +41,13 @@ label.drawer-label {
   top: 15px;
   right: 15px;
   z-index: 9999;
-  display: block;
-  height: 50px;
-  width: 50px;
+  display: flex;
+  justify-content: center;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background-color: $primary;
+  opacity: 0.6;
 
   &:hover {
     cursor: pointer;
@@ -51,10 +55,10 @@ label.drawer-label {
 
   > i {
     position: absolute;
-    width: 100%;
+    width: 2rem;
     height: 2px;
     top: 50%;
-    background-color: #000;
+    background-color: #fff;
     pointer-events: auto;
     transition-duration: .35s;
     transition-delay: .35s;
@@ -66,7 +70,7 @@ label.drawer-label {
       width: 100%;
       height: 2px;
       left: 50%;
-      background-color: #000;
+      background-color: #fff;
       content: "";
       transition: transform 0.35s;
       transform-origin: 50% 50%;
