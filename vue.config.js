@@ -1,4 +1,12 @@
 module.exports = {
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import "./scss/common/variables.scss";`
+      },
+    },
+  },
+
   chainWebpack: config => {
     /* disable insertion of assets as data urls b/c Phaser doesn't support it */
     const rules = [
