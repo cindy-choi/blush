@@ -19,6 +19,11 @@ const router = new Router({
       name: 'intro',
       component: () => import('./views/Intro'),
     },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import('./views/Settings'),
+    },
   ],
 });
 

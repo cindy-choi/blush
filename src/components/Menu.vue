@@ -27,10 +27,10 @@
 				>
 					<a
             class="menu-link"
-            :href="menu.href"
             :style="{
               '--rotate-value': `-${index*60}deg`,
             }"
+            @click="clickMenuLink(menu.href)"
           >
             <i :class="['mdi', menu.icon]" />
             <span class="menu-text">
@@ -53,10 +53,14 @@ export default {
       { id: 'NEA', icon: 'mdi-kabaddi', href: '/nea', },
       { id: 'Toolbox', icon: 'mdi-tools', href: '/toolbox', },
       { id: 'Labs', icon: 'mdi-test-tube', href: '#', },
-      { id: 'blank', icon: 'mdi-', href: '#', },
+      { id: 'Settings', icon: 'mdi-cog', href: '/settings' },
     ],
   }),
   methods: {
+    clickMenuLink(to) {
+      this.showMenu = false;
+      this.$router.push({ path: to });
+    }
   },
 }
 </script>
@@ -88,6 +92,7 @@ export default {
     font-size: 1.5rem;
     pointer-events: none;
     transition: 0.2s;
+    cursor: pointer;
   }
 
   .menu-text {
@@ -114,8 +119,8 @@ ul.show .menu-item {
 a.menu-link:after {
   content: "";
   background-color: transparent;
-  width: 4.8rem;
-  height: 4.8rem;
+  width: 5rem;
+  height: 5rem;
   border: 1.7px dashed #fff;
   display: block;
   border-radius: 50%;
