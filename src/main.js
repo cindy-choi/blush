@@ -5,11 +5,17 @@ import App from './App.vue'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
 import '../scss/custom.scss';
 
+/* Plugins */
+import router from './router';
+import i18n from './i18n';
+
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App)
-}).$mount('#app')
+  router,
+  i18n,
+  render: h => h(App),
+}).$mount('#app');
