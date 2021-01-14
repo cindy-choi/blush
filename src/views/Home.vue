@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div class="title__wrapper">
+    <div
+      class="title__wrapper"
+    >
       <svg>
         <symbol id="text-copy">
           <text
-            text-anchor="start"
             x="0"
-            y="0"
+            y="80%"
             class="main-typo"
           >
            BLUEPRINT
@@ -42,6 +43,9 @@ export default {
   data: () => ({
     title: 'BLUEPRINT',
   }),
+
+  computed: {
+  },
   methods: {
   },
 }
@@ -77,51 +81,61 @@ export default {
 
 .title__wrapper {
   width: 100vw;
-  height: 20%;
+  height: 0;
+  padding-top: 24.5%;
+  position: relative;
 
   .main-typo {
     color: $complementary;
-    font-size: 13rem;
+    font-size: 8rem;
     font-family: 'Paytone One', sans-serif;
   }
 
-#outline {
-    fill: none;
-    stroke: $complementary;
-    stroke-dasharray: 100%;
-    stroke-dashoffset: 0;
-    animation-name: outline;
-    animation-duration: 2.5s;
-    animation-timing-function: ease-in;
-    animation-fill-mode: forwards;
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
+}
+
+#outline {
+  fill: none;
+  stroke: $complementary;
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 0;
+  animation-name: outline;
+  animation-duration: 2.5s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
 
 #fill {
+  fill-opacity: 0;
+  fill: $complementary;
+  animation-name: fill;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+}
+
+@keyframes outline {
+  from {
+    stroke-dashoffset:100%;
+  }
+  to {
+    stroke-dashoffset:0;
+  }
+}
+
+@keyframes fill {
+  from {
     fill-opacity: 0;
-    fill: $complementary;
-    animation-name: fill;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in;
-    animation-fill-mode: forwards;
-    animation-delay: 1s;
   }
-
-  @keyframes outline {
-    from {
-      stroke-dashoffset:100%;
-    }
-    to {
-      stroke-dashoffset:0;
-    }
-  }
-
-  @keyframes fill {
-    from {
-      fill-opacity: 0;
-    }
-    to {
-      fill-opacity: 1;
-    }
+  to {
+    fill-opacity: 1;
   }
 }
 
