@@ -1,0 +1,32 @@
+.toasted-container .toasted {
+  font-size: 0.8rem;
+  font-wetight: normal;
+
+  i {
+    font-size: 1rem;
+  }
+
+  &.outline {
+    font-weight: normal;
+
+    &.error {
+      color: $error;
+      border-color: $error;
+    }
+
+    &.success {
+      color: $success;
+      border-color: $success;
+    }
+
+    &.info {
+      color: $primary;
+      border-color: $primary;
+    }
+  }
+}
+
+.toasted-container.bottom-center {
+  bottom: 10%;
+}
+

@@ -3,16 +3,14 @@
     id="app"
     :style="{
       '--primary-color': primaryColor,
+      '--complemantary-color': complementaryColor,
     }"
   >
-    <transition
-      name="slide-fade"
-      mode="out-in"
-    >
-      <router-view
-        class="router-view"
-      />
-    </transition>
+    <router-view
+      :class="{
+        'router-view': !isHome
+      }"
+    />
     <Menu />
   </div>
 </template>
@@ -32,7 +30,49 @@ export default {
   computed: {
     ...mapGetters({
       primaryColor: 'primaryColor',
+      complementaryColor: 'complementaryColor',
     }),
+
+    isHome() {
+      return this.$route.path === '/';
+    },
+  },
+
+  mounted() {
+    const commonOption = {
+      theme: 'outline',
+      position: 'bottom-center',
+      iconPack: 'mdi',
+    };
+
+    this.$toasted.register('toast_error', (message) => {
+      if (!message) return '처리 실패. 다시 시도하세요.';
+      return message;
+    },
+    {
+      ...commonOption,
+      type: 'error',
+      icon: 'mdi-alert-circle',
+    });
+
+    this.$toasted.register('toast_success', (message) => {
+      if (!message) return '처리 되었습니다.';
+      return message;
+    },
+    {
+      ...commonOption,
+      tyle: 'success',
+      icon: 'mdi-check-circle',
+    });
+
+    this.$toasted.register('toast_info', (message) => {
+      return message;
+    },
+    {
+      ...commonOption,
+      icon: 'mdi-information',
+      type: 'default',
+    });
   },
 }
 </script>
@@ -41,6 +81,7 @@ export default {
 body {
   margin: 0;
 }
+
 #app {
   width: 100vw;
   height: 100vh;
@@ -59,6 +100,7 @@ body {
 }
 
 .router-view {
+  display: block;
   overflow: auto;
   height: 90vh;
   width: 90vw;

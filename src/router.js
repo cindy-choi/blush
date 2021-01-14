@@ -13,11 +13,18 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: () => import('@/views/Home'),
+      children: [
+      ],
     },
     {
       path: '/intro',
       name: 'intro',
       component: () => import('./views/Intro'),
+    },
+    {
+      path: '/nea',
+      name: 'nea',
+      component: () => import('./views/NeaAdmin'),
     },
     {
       path: '/settings',

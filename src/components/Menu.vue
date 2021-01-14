@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div style="z-index: 999;">
 		<input
       v-model="showMenu"
       id="drawer"
@@ -59,7 +59,7 @@ export default {
   methods: {
     clickMenuLink(to) {
       this.showMenu = false;
-      this.$router.push({ path: to });
+      this.$router.push({ path: to }).catch(e => {});
     }
   },
 }

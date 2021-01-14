@@ -6,5 +6,19 @@ $theme-colors: (
   "warning": #ef5350,
   "light-gray": #eee,
 );
+$blue: #307ccd;
+$red: #e64c41;
+$green: #33d458;
 
 $primary: var(--primary-color);
+$complementary: var(--complemantary-color);
+
+$title-color: #3f3f3f;
+$text-color: #777777;
+$sub-text-color: #b7b7b7;
+
+$error: $red;
+$success: $green;
+$info: $blue;
+
+

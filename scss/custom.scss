@@ -1,9 +1,12 @@
 @import "common/variables";
-// @import "common/fonts"
+@import "common/fonts";
+
 @import "design/menu";
 @import "design/colorpicker";
 @import "design/popover";
+@import "design/toast";
 @import "design/transition";
+@import "design/radio";
 
 /* import bootstrap scss */
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
