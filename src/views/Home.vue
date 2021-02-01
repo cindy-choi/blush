@@ -120,23 +120,4 @@ export default {
   animation-fill-mode: forwards;
   animation-delay: 1s;
 }
-
-@keyframes outline {
-  from {
-    stroke-dashoffset:100%;
-  }
-  to {
-    stroke-dashoffset:0;
-  }
-}
-
-@keyframes fill {
-  from {
-    fill-opacity: 0;
-  }
-  to {
-    fill-opacity: 1;
-  }
-}
-
 </style>

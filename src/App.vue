@@ -8,7 +8,7 @@
   >
     <router-view
       :class="{
-        'router-view': !isHome
+        'router-view': !isFullScreenView
       }"
     />
     <Menu />
@@ -33,8 +33,9 @@ export default {
       complementaryColor: 'complementaryColor',
     }),
 
-    isHome() {
-      return this.$route.path === '/';
+    isFullScreenView() {
+      // 홈과 소개 페이지는 풀스크린으로 인터렉티브 딸거임
+      return this.$route.meta.fullScreen;
     },
   },
 

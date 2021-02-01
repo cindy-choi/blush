@@ -13,6 +13,9 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: () => import('@/views/Home'),
+      meta: {
+        fullScreen: true,
+      },
       children: [
       ],
     },
@@ -20,6 +23,9 @@ const router = new Router({
       path: '/intro',
       name: 'intro',
       component: () => import('./views/Intro'),
+      meta: {
+        fullScreen: true,
+      },
     },
     {
       path: '/nea',
@@ -30,6 +36,26 @@ const router = new Router({
       path: '/settings',
       name: 'settings',
       component: () => import('./views/Settings'),
+    },
+    {
+      path: '/labs',
+      name: 'labs',
+      component: () => import('./views/Labs'),
+      meta: {
+        fullScreen: true,
+      },
+      children: [
+        {
+          path: '/interactive',
+          name: 'interactive',
+          component: () => import('./views/Labs/Interactive'),
+        },
+        {
+          path: '/parallel',
+          name: 'parallel',
+          component: () => import('./views/Labs/Parallel'),
+        }
+      ],
     },
   ],
 });
