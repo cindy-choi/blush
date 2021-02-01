@@ -52,7 +52,7 @@ export default {
       { id: 'Intro', icon: 'mdi-alien-outline', href: '/intro' },
       { id: 'NEA', icon: 'mdi-kabaddi', href: '/nea', },
       { id: 'Toolbox', icon: 'mdi-tools', href: '/toolbox', },
-      { id: 'Labs', icon: 'mdi-test-tube', href: '#', },
+      { id: 'Labs', icon: 'mdi-test-tube', href: '/labs', },
       { id: 'Settings', icon: 'mdi-cog', href: '/settings' },
     ],
   }),
