@@ -32,7 +32,7 @@
   </div>
 </template>
 <script>
-const speed = 0.009;
+const speed = 0.005;
 
 let x = 0, y = 0;
 let mx = 0, my = 0;
@@ -42,11 +42,13 @@ function loop() {
   mx += (x - mx) * speed;
   my += (y - my) * speed;
 
-  titleRect.style.transform = "translate("+ (mx/9) +"px," + (my/9) +"px)";
+  // 3d rotate
+  // titleRect.style.transform = "translate3d("+ -(mx/9) +"px," + -(my/9) +"px,0) rotate3d(1,1,0,"+ -mx / 9 +"deg)";
+  titleRect.style.transform = `translate3d(${-(mx/9)}px,${-(my/9)}px,0) rotate3d(1,1,0,${-mx/9}deg)`;
 
-  //3d 텍스트 모션
-  title1.style.transform = "translate3d("+ -(mx/2) +"px," + -(my/2) +"px,0) rotate3d(0,1,0,"+ -mx / 50 +"deg)";
-  title2.style.transform = "translate3d("+ -(mx/4) +"px," + -(my/4) +"px,0) rotate3d(0,1,0,"+ -mx / 50 +"deg)";
+  // move
+  title1.style.transform = "translate("+ (mx/2) +"px," + (my/2) +"px)";
+  title2.style.transform = "translate("+ (mx/4) +"px," + (my/4) +"px)";
 
   window.requestAnimationFrame(loop);
 };
@@ -93,10 +95,10 @@ section.section-title {
 
   .title-rect {
     position: absolute;
-    top: 30%;
+    top: 20%;
     left: 20%;
     z-index: 0;
-    width: 60%;
+    width: 50%;
   }
 
   h1 {
