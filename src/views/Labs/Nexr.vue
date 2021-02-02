@@ -24,6 +24,7 @@
       />
     </section>
     <section class="section-intro-1">
+      
     </section>
     <section class="section-intro-2">
     </section>
@@ -32,23 +33,25 @@
   </div>
 </template>
 <script>
-const speed = 0.005;
+const speed = 0.003;
 
 let x = 0, y = 0;
 let mx = 0, my = 0;
 let titleRect, title1, title2;
+let test;
 
 function loop() {
   mx += (x - mx) * speed;
   my += (y - my) * speed;
 
+  test.innerHTML = `x : ${x}, mx: ${mx}`;
+
   // 3d rotate
-  // titleRect.style.transform = "translate3d("+ -(mx/9) +"px," + -(my/9) +"px,0) rotate3d(1,1,0,"+ -mx / 9 +"deg)";
-  titleRect.style.transform = `translate3d(${-(mx/9)}px,${-(my/9)}px,0) rotate3d(1,1,0,${-mx/9}deg)`;
+  titleRect.style.transform = `translate3d(${-(mx/2)}px,${-(my/2)}px,0) rotate3d(1,1,0,${-mx/3}deg)`;
 
   // move
-  title1.style.transform = "translate("+ (mx/2) +"px," + (my/2) +"px)";
-  title2.style.transform = "translate("+ (mx/4) +"px," + (my/4) +"px)";
+  title1.style.transform = `translate(${mx/2}px, ${my/2}px)`;
+  title2.style.transform = `translate(${mx/4}px, ${my/4}px)`;
 
   window.requestAnimationFrame(loop);
 };
@@ -60,6 +63,7 @@ export default {
     titleRect = this.$refs['title-rect'];
     title1 = this.$refs.title1;
     title2 = this.$refs.title2;
+    test  = this.$refs.test;
 
     loop();
   },
@@ -95,7 +99,7 @@ section.section-title {
 
   .title-rect {
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: 20%;
     z-index: 0;
     width: 50%;
@@ -104,6 +108,7 @@ section.section-title {
   h1 {
     color: white;
     font-weight: bold;
+    transition: ease 0.3s; /* 예제엔 없었지만 속도가 느려지면 뚝뚝 끊겨보이는 현상이 있어서 삽입함 */
   }
 
   h1:nth-child(1) {
