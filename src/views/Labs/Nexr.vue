@@ -1,20 +1,25 @@
 <template>
   <div
+    ref="page-container"
     class="nexr__wrapper"
     @mousemove.prevent="handleMouseMove"
   >
     <section class="section-title">
+      <div
+        ref="title-cover"
+        class="cover"
+      ></div>
       <b-img
         ref="title-background"
         src="/static/images/nexr-title-image.jpg"
         class="title-background"
       />
       <div class="title-container">
-        <h1 ref="title1" >
-          Big Data Platform
+        <h1 ref="title" >
+          움직이는 타이틀
         </h1>
-        <h1 ref="title2">
-          for Enterprise.
+        <h1 ref="sub-title">
+          반대방향서브텍스트
         </h1>
       </div>
       <b-img
@@ -23,9 +28,19 @@
         class="title-rect"
       />
     </section>
-    <section class="section-intro-1">
-      
-    </section>
+    <section class="section-info">
+      <div class="more__wrapper">
+        <i class="mdi mdi-arrow-down" />
+        <span
+          class="go-section-2"
+          @click="goToSection(2)"
+        >
+          특정섹션으로 스크롤하기
+        </span>
+      </div>
+
+      가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 
+      </section>
     <section class="section-intro-2">
     </section>
     <section class="section-intro-3">
@@ -37,33 +52,38 @@ const speed = 0.003;
 
 let x = 0, y = 0;
 let mx = 0, my = 0;
-let titleRect, title1, title2;
-let test;
+let titleRect, title, subTitle; // , titleCover, titleBackground;
+let scrollTop = 0;
 
 function loop() {
   mx += (x - mx) * speed;
   my += (y - my) * speed;
 
-  test.innerHTML = `x : ${x}, mx: ${mx}`;
-
   // 3d rotate
   titleRect.style.transform = `translate3d(${-(mx/2)}px,${-(my/2)}px,0) rotate3d(1,1,0,${-mx/3}deg)`;
 
   // move
-  title1.style.transform = `translate(${mx/2}px, ${my/2}px)`;
-  title2.style.transform = `translate(${mx/4}px, ${my/4}px)`;
+  title.style.transform = `translate(${mx/2}px, ${my/2}px)`;
+  subTitle.style.transform = `translate(${mx/4}px, ${my/4}px)`;
 
   window.requestAnimationFrame(loop);
 };
 
 export default {
   name: 'Nexr',
+
+  created() {
+    // 왜 v-on으로 처리되지 않을까?
+    window.addEventListener('scroll', this.handleScroll)
+  },
+
   mounted() {
     // 전역변수에 아이템 할당
     titleRect = this.$refs['title-rect'];
-    title1 = this.$refs.title1;
-    title2 = this.$refs.title2;
-    test  = this.$refs.test;
+    title = this.$refs.title;
+    subTitle = this.$refs['sub-title'];
+    // titleCover = this.$refs['title-cover'];
+    // titleBackground = this.$refs['title-background'];
 
     loop();
   },
@@ -73,6 +93,32 @@ export default {
       x = e.clientX - window.innerWidth / 2;
       y = e.clientY - window.innerHeight / 2;
     },
+
+    handleScroll(/* e */) {
+      scrollTop = document.documentElement.scrollTop;
+
+      // scroll-overlay: title
+      this.$refs['title-background'].style.transform = `scale(${(1 + scrollTop/1000)})`;
+      this.$refs['title-cover'].style.opacity = scrollTop/1000;
+
+      if (scrollTop >= 725 && scrollTop < 1000) {
+        // 오 
+        // 가로로 움직여
+        window.scrollTo({ left: (1000 - scrollTop), behavior: 'smooth', });
+      }
+    },
+
+    goToSection(index) {
+      // 각 섹션의 위치 고정
+      const sectionHeights = [ 0, 725, ];
+
+      let point = 0;
+      for (let i = 0; i < index; i++) {
+        point += sectionHeights[i];
+      }
+
+      window.scrollTo({ top: point, behavior: 'smooth', });
+    },
   },
 };
 </script>
@@ -80,7 +126,7 @@ export default {
 .nexr__wrapper {
   width: 100vw;
   height: 10000px;
-  overflow-x: hidden;
+  overflow-x: auto;
   margin: 0;
   padding: 0;
 }
@@ -95,6 +141,17 @@ section.section-title {
 
   .title-background {
     width: 100%;
+  }
+
+  .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: black;
+    opacity: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
   }
 
   .title-rect {
@@ -131,6 +188,34 @@ section.section-title {
     width: max-content;
     z-index: 1;
   }
+}
+
+section.section-info {
+  position: absolute;
+  top: 90%; /* section-title의 높이만큼 */
+  height: 1000px;
+  width: 200vw;
+  background-color: white;
+
+  .more__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    height: 5%;
+    transition: ease 1s;
+
+    &:hover {
+      opacity: 0.4;
+    }
+
+    .go-section-2 {
+      cursor: pointer;
+    }
+  }
+
+
 }
 
 @keyframes slide-in-from-left {
