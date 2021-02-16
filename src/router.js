@@ -40,24 +40,30 @@ const router = new Router({
     {
       path: '/labs',
       component: () => import('./views/Labs'),
-      meta: {
-        fullScreen: true,
-      },
       children: [
         {
           path: '/',
+          name: 'parallel',
+          component: () => import('./views/Labs/Parallel'),
+          meta: {
+            fullScreen: true,
+          },
+        },
+        {
+          path: '/nexr',
           name: 'nexr',
           component: () => import('./views/Labs/Nexr'),
+          meta: {
+            fullScreen: true,
+          },
         },
         {
           path: '/interactive',
           name: 'interactive',
           component: () => import('./views/Labs/Interactive'),
-        },
-        {
-          path: '/parallel',
-          name: 'parallel',
-          component: () => import('./views/Labs/Parallel'),
+          meta: {
+            fullScreen: true,
+          },
         },
       ],
     },

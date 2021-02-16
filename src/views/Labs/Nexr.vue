@@ -16,10 +16,10 @@
       />
       <div class="title-container">
         <h1 ref="title" >
-          움직이는 타이틀
+          마우스를 따라감
         </h1>
         <h1 ref="sub-title">
-          반대방향서브텍스트
+          조금느리게 감
         </h1>
       </div>
       <b-img
@@ -27,23 +27,6 @@
         src="/static/images/test_rect.png"
         class="title-rect"
       />
-    </section>
-    <section class="section-info">
-      <div class="more__wrapper">
-        <i class="mdi mdi-arrow-down" />
-        <span
-          class="go-section-2"
-          @click="goToSection(2)"
-        >
-          특정섹션으로 스크롤하기
-        </span>
-      </div>
-
-      가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 가로 스크롤 할거임 
-      </section>
-    <section class="section-intro-2">
-    </section>
-    <section class="section-intro-3">
     </section>
   </div>
 </template>
@@ -74,7 +57,7 @@ export default {
 
   created() {
     // 왜 v-on으로 처리되지 않을까?
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll);
   },
 
   mounted() {
@@ -82,8 +65,6 @@ export default {
     titleRect = this.$refs['title-rect'];
     title = this.$refs.title;
     subTitle = this.$refs['sub-title'];
-    // titleCover = this.$refs['title-cover'];
-    // titleBackground = this.$refs['title-background'];
 
     loop();
   },
@@ -100,12 +81,6 @@ export default {
       // scroll-overlay: title
       this.$refs['title-background'].style.transform = `scale(${(1 + scrollTop/1000)})`;
       this.$refs['title-cover'].style.opacity = scrollTop/1000;
-
-      if (scrollTop >= 725 && scrollTop < 1000) {
-        // 오 
-        // 가로로 움직여
-        window.scrollTo({ left: (1000 - scrollTop), behavior: 'smooth', });
-      }
     },
 
     goToSection(index) {
@@ -136,7 +111,7 @@ section.section-title {
   position: absolute;
   top: 0;
   left: 0;
-  height: 90%;
+  height: 100%;
   overflow: hidden;
 
   .title-background {
@@ -188,34 +163,6 @@ section.section-title {
     width: max-content;
     z-index: 1;
   }
-}
-
-section.section-info {
-  position: absolute;
-  top: 90%; /* section-title의 높이만큼 */
-  height: 1000px;
-  width: 200vw;
-  background-color: white;
-
-  .more__wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: red;
-    height: 5%;
-    transition: ease 1s;
-
-    &:hover {
-      opacity: 0.4;
-    }
-
-    .go-section-2 {
-      cursor: pointer;
-    }
-  }
-
-
 }
 
 @keyframes slide-in-from-left {
