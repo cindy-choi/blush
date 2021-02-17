@@ -11,6 +11,10 @@
     <section class="section">
       <slide-effect />
     </section>
+
+    <section class="section">
+      <horizontal-scroll />
+    </section>
   </div>
 </template>
 
@@ -18,6 +22,7 @@
 import MouseMoveEffect from './Parallel/MouseMoveEffect';
 import OpenEffect from './Parallel/OpenEffect';
 import SlideEffect from './Parallel/SlideEffect';
+import HorizontalScroll from './Parallel/HorizontalScroll';
 
 export default {
   name: 'Parallel',
@@ -25,6 +30,7 @@ export default {
     MouseMoveEffect,
     OpenEffect,
     SlideEffect,
+    HorizontalScroll,
   },
   data: () => ({
     // maskWidth: 50,
