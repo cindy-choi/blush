@@ -40,6 +40,7 @@ export default {
   },
 
   mounted() {
+    console.log(this.$router);
     const commonOption = {
       theme: 'outline',
       position: 'bottom-center',

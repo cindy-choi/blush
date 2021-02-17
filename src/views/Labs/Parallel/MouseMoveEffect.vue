@@ -4,7 +4,7 @@
     class="nexr__wrapper"
     @mousemove.prevent="handleMouseMove"
   >
-    <section class="section-title">
+    <div class="section-title">
       <div
         ref="title-cover"
         class="cover"
@@ -27,7 +27,7 @@
         src="/static/images/test_rect.png"
         class="title-rect"
       />
-    </section>
+    </div>
   </div>
 </template>
 <script>
@@ -53,7 +53,7 @@ function loop() {
 };
 
 export default {
-  name: 'Nexr',
+  name: 'MouseMoveEffect',
 
   created() {
     // 왜 v-on으로 처리되지 않을까?
@@ -100,13 +100,12 @@ export default {
 <style scoped lang="scss">
 .nexr__wrapper {
   width: 100vw;
-  height: 10000px;
-  overflow-x: auto;
+  height: 100vh;
   margin: 0;
   padding: 0;
 }
 
-section.section-title {
+.section-title {
   display: flex;
   position: absolute;
   top: 0;

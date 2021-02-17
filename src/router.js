@@ -16,13 +16,11 @@ const router = new Router({
       meta: {
         fullScreen: true,
       },
-      children: [
-      ],
     },
     {
       path: '/intro',
       name: 'intro',
-      component: () => import('./views/Intro'),
+      component: () => import('@/views/Intro'),
       meta: {
         fullScreen: true,
       },
@@ -30,37 +28,29 @@ const router = new Router({
     {
       path: '/nea',
       name: 'nea',
-      component: () => import('./views/NeaAdmin'),
+      component: () => import('@/views/NeaAdmin'),
     },
     {
       path: '/settings',
       name: 'settings',
-      component: () => import('./views/Settings'),
+      component: () => import('@/views/Settings'),
     },
     {
       path: '/labs',
-      component: () => import('./views/Labs'),
+      component: () => import('@/views/Labs'),
       children: [
         {
-          path: '/',
+          path: 'parallel',
           name: 'parallel',
-          component: () => import('./views/Labs/Parallel'),
+          component: () => import('@/views/Labs/Parallel'),
           meta: {
             fullScreen: true,
           },
         },
         {
-          path: '/nexr',
-          name: 'nexr',
-          component: () => import('./views/Labs/Nexr'),
-          meta: {
-            fullScreen: true,
-          },
-        },
-        {
-          path: '/interactive',
+          path: 'interactive',
           name: 'interactive',
-          component: () => import('./views/Labs/Interactive'),
+          component: () => import('@/views/Labs/Interactive'),
           meta: {
             fullScreen: true,
           },
